@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>沈丁力 | 网络安全工程师</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --text-dark: #1f2937;
+            --text-gray: #6b7280;
+            --bg-light: #f9fafb;
+            --white: #ffffff;
+            --border: #e5e7eb;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Header */
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        nav a {
+            color: var(--text-gray);
+            text-decoration: none;
+            margin-left: 24px;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        /* Hero */
+        .hero {
+            background: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), #06b6d4);
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+        
+        .hero .title {
+            font-size: 20px;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+        
+        .hero .subtitle {
+            font-size: 16px;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto 24px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+        
+        .contact-item svg {
+            width: 18px;
+            height: 18px;
+            color: var(--primary);
+        }
+        
+        /* Sections */
+        section {
+            padding: 60px 0;
+        }
+        
+        section h2 {
+            font-size: 28px;
+            margin-bottom: 32px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        section h2::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+        
+        /* Education */
+        .education-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border);
+        }
+        
+        .edu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        
+        .edu-header h3 {
+            font-size: 18px;
+            color: var(--text-dark);
+        }
+        
+        .edu-header .time {
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+        
+        .edu-school {
+            color: var(--primary);
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        
+        .edu-gpa {
+            color: var(--text-gray);
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        
+        .edu-courses h4 {
+            font-size: 14px;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+        
+        .courses-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .course-tag {
+            background: var(--bg-light);
+            color: var(--text-gray);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+        
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            gap: 24px;
+        }
+        
+        .project-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--border);
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .project-header h3 {
+            font-size: 18px;
+            color: var(--primary);
+        }
+        
+        .project-header .time {
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+        
+        .project-desc {
+            color: var(--text-gray);
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .project-techs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        
+        .tech-tag {
+            background: #dbeafe;
+            color: var(--primary-dark);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .project-details {
+            list-style: none;
+        }
+        
+        .project-details li {
+            color: var(--text-dark);
+            font-size: 14px;
+            margin-bottom: 8px;
+            padding-left: 16px;
+            position: relative;
+        }
+        
+        .project-details li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+        
+        /* Skills */
+        .skills-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        
+        .skill-category {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--border);
+        }
+        
+        .skill-category h3 {
+            font-size: 16px;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+        
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill-item {
+            background: var(--bg-light);
+            color: var(--text-dark);
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+        }
+        
+        /* Experience */
+        .exp-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border);
+        }
+        
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        
+        .exp-header h3 {
+            font-size: 18px;
+            color: var(--text-dark);
+        }
+        
+        .exp-header .time {
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+        
+        .exp-company {
+            color: var(--primary);
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        
+        .exp-details li {
+            color: var(--text-dark);
+            font-size: 14px;
+            margin-bottom: 6px;
+            padding-left: 16px;
+            position: relative;
+        }
+        
+        .exp-details li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+        
+        /* Awards */
+        .awards-list {
+            display: grid;
+            gap: 12px;
+        }
+        
+        .award-item {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 16px 20px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .award-icon {
+            width: 40px;
+            height: 40px;
+            background: #fef3c7;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .award-info h4 {
+            font-size: 14px;
+            color: var(--text-dark);
+        }
+        
+        .award-info p {
+            font-size: 12px;
+            color: var(--text-gray);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--white);
+            border-top: 1px solid var(--border);
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+        
+        /* Print */
+        @media print {
+            header { position: static; }
+            .hero { padding: 40px 0; }
+            section { padding: 30px 0; }
+        }
+        
+        /* Mobile */
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 28px; }
+            .contact-info { flex-direction: column; align-items: center; gap: 12px; }
+            nav { display: none; }
+            .edu-header, .project-header, .exp-header { flex-direction: column; gap: 4px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">SDL</div>
+            <nav>
+                <a href="#about">关于</a>
+                <a href="#education">教育</a>
+                <a href="#projects">项目</a>
+                <a href="#skills">技能</a>
+                <a href="#experience">经历</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="about">
+        <div class="container">
+            <div class="avatar">沈</div>
+            <h1>沈丁力</h1>
+            <p class="title">网络安全工程师 / AI Agent 开发者</p>
+            <p class="subtitle">布里斯托大学网络安全硕士，专注于AI Agent、RAG系统与网络安全。具备扎实的算法功底和丰富的全栈开发经验。</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                    shendingli0512@163.com
+                </div>
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                    </svg>
+                    136-2061-5945
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2>教育背景</h2>
+            <div class="education-card">
+                <div class="edu-header">
+                    <h3>网络安全硕士 · Master of Cyber Security</h3>
+                    <span class="time">2024.09 - 2026.02</span>
+                </div>
+                <p class="edu-school">布里斯托大学（University of Bristol）· QS世界大学排名 #51</p>
+                <p class="edu-gpa">核心课程：物联网和物联网安全、工业系统安全、网络安全、系统安全基础</p>
+                <div class="edu-courses">
+                    <!-- -->
+                </div>
+            </div>
+            <div class="education-card">
+                <div class="edu-header">
+                    <h3>软件工程学士 · Bachelor of Software Engineering</h3>
+                    <span class="time">2018.09 - 2022.06</span>
+                </div>
+                <p class="edu-school">中北大学</p>
+                <p class="edu-gpa">绩点：3.71/5.00 · 平均分：87.63（前10%）</p>
+                <div class="edu-courses">
+                    <div class="courses-list">
+                        <span class="course-tag">数据结构与算法</span>
+                        <span class="course-tag">计算机网络</span>
+                        <span class="course-tag">面向对象程序设计</span>
+                        <span class="course-tag">操作系统</span>
+                        <span class="course-tag">数据可视化技术</span>
+                        <span class="course-tag">大数据分析</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2>项目经验</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>通用浏览器自动化智能体</h3>
+                        <span class="time">2025.11 - 2026.01</span>
+                    </div>
+                    <p class="project-desc">基于 OpenManus 架构设计并开发自主浏览器 Agent，面向传统 RPA 难以处理的动态网页交互与复杂推理任务。</p>
+                    <div class="project-techs">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Playwright</span>
+                        <span class="tech-tag">Qwen-GUI-Plus</span>
+                        <span class="tech-tag">RAG</span>
+                        <span class="tech-tag">ReAct</span>
+                    </div>
+                    <ul class="project-details">
+                        <li>基于 ReAct 模式构建 Planner – Executor – Reviewer 分层状态机，支持任务拆解、动态重试与失败回滚</li>
+                        <li>集成 Daytona 沙箱环境，实现代码执行的网络隔离与资源限制，确保安全性</li>
+                        <li>引入 GUI-Plus 策略，构建 DOM 语义解析 + Vision 感知双通道元素定位机制，成功率从 60% 提升至 95%</li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>企业级 AI 搜索与问答系统</h3>
+                        <span class="time">2025.09 - 2025.11</span>
+                    </div>
+                    <p class="project-desc">面向金融投顾/保险企业客服场景，构建企业级 RAG 系统，解决海量非结构化文档的精准检索与问答问题。</p>
+                    <div class="project-techs">
+                        <span class="tech-tag">Elasticsearch</span>
+                        <span class="tech-tag">BM25</span>
+                        <span class="tech-tag">FAISS</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">BGE-Reranker</span>
+                    </div>
+                    <ul class="project-details">
+                        <li>设计 BM25 关键词 + 向量语义的加权混合检索策略，Top-5 Recall 提升约 40%</li>
+                        <li>基于 Agent 框架统一调度本地 RAG 与 Web Search，实现多数据源自动决策</li>
+                        <li>构建 50+ 真实业务问题的 Golden Dataset，持续监控 Hit Rate、MRR 等指标</li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>财报 RAG 问答系统</h3>
+                        <span class="time">2025.11 - 2026.01</span>
+                    </div>
+                    <p class="project-desc">面向财报、研报等复杂 PDF 文档，设计并实现端到端 RAG 问答系统，实现"回答—证据—原文页码"闭环验证。</p>
+                    <div class="project-techs">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">MinerU</span>
+                        <span class="tech-tag">FAISS</span>
+                        <span class="tech-tag">Streamlit</span>
+                        <span class="tech-tag">LLM Rerank</span>
+                    </div>
+                    <ul class="project-details">
+                        <li>构建 PDF → MinerU → Markdown 转换流程，解析阶段保留表格结构</li>
+                        <li>采用 FAISS 向量索引 + BM25 关键词索引的混合检索方案</li>
+                        <li>在 Streamlit 前端展示相关证据片段与引用页码，实现可追溯结构化回答</li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>舆情监测智能 Agent</h3>
+                        <span class="time">2025.08 - 2025.09</span>
+                    </div>
+                    <p class="project-desc">基于 Coze/Dify 设计可复用工作流，实现从数据采集到日报生成的全流程自动化。</p>
+                    <div class="project-techs">
+                        <span class="tech-tag">Coze</span>
+                        <span class="tech-tag">Dify</span>
+                        <span class="tech-tag">多模型协作</span>
+                        <span class="tech-tag">情感分析</span>
+                    </div>
+                    <ul class="project-details">
+                        <li>设计 Securities、AppStoreEstimate、GenerateDailyReports 三条可复用工作流</li>
+                        <li>使用 Python 自研财经新闻爬虫，配合多模型角色协作的轻量级 Multi-Agent 架构</li>
+                        <li>通过 Batch Processing 批量处理新闻，提升吞吐与成本效率</li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>基于 YOLO 的无人机图像目标检测系统</h3>
+                        <span class="time">2025.01 - 2025.08</span>
+                    </div>
+                    <p class="project-desc">评估 YOLOv7 模型在无人机场景下的鲁棒性表现，结合 VisDrone 数据集进行训练与攻击实验。</p>
+                    <div class="project-techs">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">YOLOv7</span>
+                        <span class="tech-tag">OpenCV</span>
+                    </div>
+                    <ul class="project-details">
+                        <li>通过锚框重配置、数据增强与超参数调优，将 mAP@0.5 从 0.22 提升至 0.37（+15.6%）</li>
+                        <li>开发多强度 FGSM 及迭代式 I-FGSM 对抗攻击方法，使检测 mAP 最多下降 78%</li>
+                        <li>以第一作者身份撰写论文被 Springer 收录于 DAI2023 国际会议</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2>技能特长</h2>
+            <div class="skills-section">
+                <div class="skill-category">
+                    <h3>编程语言</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">C/C++</span>
+                        <span class="skill-item">SQL</span>
+                        <span class="skill-item">JavaScript</span>
+                        <span class="skill-item">HTML/CSS</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>AI & Agent</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">LangChain</span>
+                        <span class="skill-item">LangGraph</span>
+                        <span class="skill-item">RAG</span>
+                        <span class="skill-item">Agent Framework</span>
+                        <span class="skill-item">Qwen-Agent</span>
+                        <span class="skill-item">Coze</span>
+                        <span class="skill-item">Dify</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>数据库 & 搜索</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Elasticsearch</span>
+                        <span class="skill-item">FAISS</span>
+                        <span class="skill-item">BM25</span>
+                        <span class="skill-item">MySQL</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>工具 & 平台</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Docker</span>
+                        <span class="skill-item">GitHub</span>
+                        <span class="skill-item">VS Code</span>
+                        <span class="skill-item">LangFuse</span>
+                        <span class="skill-item">NotebookLM</span>
+                        <span class="skill-item">RagFlow</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2>实习经历</h2>
+            <div class="exp-card">
+                <div class="exp-header">
+                    <h3>技术运营部</h3>
+                    <span class="time">2023.03 - 2023.08</span>
+                </div>
+                <p class="exp-company">太原雅卡教育科技有限公司</p>
+                <ul class="exp-details">
+                    <li>使用 HTML/CSS/JavaScript 完成官网首页前端界面开发，联调后端接口</li>
+                    <li>开发后台数据查询模块，编写 SQL 与聚合逻辑，支持用户按条件检索历史数据</li>
+                    <li>处理系统日志与数据异常记录，编写定时备份脚本，保障数据库正常运行</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="awards">
+        <div class="container">
+            <h2>荣誉证书</h2>
+            <div class="awards-list">
+                <div class="award-item">
+                    <div class="award-icon">🏆</div>
+                    <div class="award-info">
+                        <h4>雅思 6.5 / 英语六级 CET-6 (506分)</h4>
+                        <p>语言能力证明</p>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-icon">🥈</div>
+                    <div class="award-info">
+                        <h4>第二届"刘鼎杯"创新创业竞赛银奖（前20%）</h4>
+                        <p>2021.04</p>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-icon">🥉</div>
+                    <div class="award-info">
+                        <h4>蓝桥杯全国软件大赛山西赛区二等奖（前20%）</h4>
+                        <p>2020.10</p>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-icon">📜</div>
+                    <div class="award-info">
+                        <h4>CSP/CCF 软件能力认证（前22%）</h4>
+                        <p>2020.12</p>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-icon">🎓</div>
+                    <div class="award-info">
+                        <h4>综合素质二等奖学金（2020、2021）/ 三等奖学金（2019）</h4>
+                        <p>中北大学</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 沈丁力 · 个人简历网站</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Intersection Observer for animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.project-card, .education-card, .exp-card, .skill-category, .award-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s, transform 0.5s';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
